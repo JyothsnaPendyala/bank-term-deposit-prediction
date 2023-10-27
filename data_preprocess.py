@@ -1,8 +1,9 @@
-from load_data import load_data
+from data_analysis import data_analysis
 import pandas as pd
 import numpy as np
+
 def data_preprocess():
-    df = load_data()
+    df = data_analysis()
     features_na = [features for features in df.columns if df[features].isnull().sum() > 0]
     for feature in features_na:
         print(feature, np.round(df[feature].isnull().mean()))
