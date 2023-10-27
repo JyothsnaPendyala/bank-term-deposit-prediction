@@ -1,7 +1,9 @@
 import numpy as np
 import pandas as pd
+from datavisualization import visualise_data
+
 def feature_engineering():
-    data = pd.read_csv('bank.csv')
+    data = visualise_data()
     y_no_count, y_yes_count =data['y'].value_counts()
     y_yes = data[data['y'] == 'yes']
     y_no = data[data['y'] == 'no']
