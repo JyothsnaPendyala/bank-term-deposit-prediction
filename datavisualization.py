@@ -27,7 +27,8 @@ def visualise_data():
         sns.boxplot(df[numerical_feature])
         plt.xlabel(numerical_feature)
         plt.show()
-    cor_mat = df.corr()
+    data_num = df[numerical_features]
+    cor_mat = data_num.corr()
     plt.figure(figsize = (12,12))
     sns.heatmap(cor_mat,annot=True)
     plt.show()
