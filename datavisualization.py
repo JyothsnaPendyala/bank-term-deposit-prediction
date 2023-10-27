@@ -1,32 +1,34 @@
-from data_preprocess import data_preprocess
+from data_preprocessing import data_preprocess
 import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from load_data import load_data
+from extract_data import load_data
 
 def visualise_data():
     df = load_data()
     categorical_features, numerical_features = data_preprocess()
     for categorical_feature in categorical_features:
+        fig, axs = plt.subplots(figsize=(5,5))
         sns.countplot(y=categorical_feature,data=df)
         plt.xlabel(categorical_feature)
         plt.title(categorical_feature)
-    plt.show()
+        plt.show()
     for categorical_feature in categorical_features:
         sns.catplot(x='y', col=categorical_feature, kind='count', data=df)
-    plt.show()
+        plt.show()
     for numerical_feature in numerical_features:
+        fig, axs = plt.subplots(figsize=(5,4))
         sns.distplot(df[numerical_feature])
         plt.xlabel(numerical_feature)
-    plt.show()
+        plt.show()
     for numerical_feature in numerical_features:
+        fig, axs = plt.subplots(figsize=(5,4))
         sns.boxplot(df[numerical_feature])
         plt.xlabel(numerical_feature)
-        plotnumber+=1
-    plt.show()
+        plt.show()
     cor_mat = df.corr()
-    fig = plt.figure(figsize=(15,7))
+    plt.figure(figsize = (12,12))
     sns.heatmap(cor_mat,annot=True)
     plt.show()
     return df
