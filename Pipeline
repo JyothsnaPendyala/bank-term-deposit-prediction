@@ -2,8 +2,7 @@ pipeline{
     agent any
 
     stages{
-        
-        stage("Data Extraction"){
+        stage("Extract Data"){
             steps{
                 sh 'python3 extract_data.py'
             }
@@ -28,13 +27,11 @@ pipeline{
                 sh 'python3 feature_engineering.py'
             }
         }
-        
-       
     }
-        post{
+    post{
        
         always {
-            archiveArtifacts artifacts: 'bank_term_deposit_prediction_clean_data.csv', onlyIfSuccessful: true
+            archiveArtifacts artifacts: 'student_performance_cleansed_data.csv', onlyIfSuccessful: true
         }
             }
 }
